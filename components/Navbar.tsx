@@ -16,7 +16,6 @@ const Navbar = () => {
                     <p className='text-[21px]  font-bold'>
                         Price<span className='text-amber-700'>ful</span>
                     </p>
-
                 </Link>
                 <div className="flex items-center gap-5">
                     {navIcons.map((icon, index) => (
