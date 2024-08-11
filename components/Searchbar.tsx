@@ -40,7 +40,12 @@ const Searchbar = () => {
         }
         try {
             setIsLoading(true);
+            //scraping the product page
+           // const response = await fetch(
+               // `https://setupgame.ma/products/${searchQuery}`
+          //  );
         } catch (error) {
+            console.log(error);
         } finally {
             setIsLoading(false);
         }

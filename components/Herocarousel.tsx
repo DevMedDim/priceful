@@ -14,9 +14,9 @@ const Herocarousel = () => {
     return (
         <div className=" relative w-full pb-0 pt-0 mb-9 mt-0 rounded-[30px] bg-gray-200 sm:pt-20 sm:px-10 sm:mx-auto  ">
             <Carousel
-                //autoPlay
+                autoPlay
                 infiniteLoop
-                //interval={3000}
+                interval={3000}
                 showArrows={false}
                 showStatus={false}
                 showIndicators={false}
