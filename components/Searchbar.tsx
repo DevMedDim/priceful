@@ -1,11 +1,12 @@
 "use client";
+import { ScrapeSaveAction } from "@/lib/actions";
 import { FormEvent, useState } from "react";
 const isValidProductLink = (link: string) => {
     try {
         const url = new URL(link);
         const hostname = url.hostname;
         if (
-            hostname.includes("setupgame.ma")
+            hostname.includes("amazon.com") || hostname.includes("amazon.") || hostname.endsWith("amazon")
             // url.pathname.startsWith("/products/")   // check if the link starts with /products/
             // && url.pathname.endsWith("/")           // check if the link ends with a slash
             // && url.pathname.split('/').length === 4 // check if the link has 4 parts
@@ -31,19 +32,17 @@ const isValidProductLink = (link: string) => {
 const Searchbar = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const isValidLink = isValidProductLink(searchQuery);
 
         if (!isValidLink) {
-            return alert("provided link is not a setupgame link");
+            return alert("provided link is not a amazon link");
         }
         try {
             setIsLoading(true);
             //scraping the product page
-           // const response = await fetch(
-               // `https://setupgame.ma/products/${searchQuery}`
-          //  );
+            const product = await ScrapeSaveAction(searchQuery);
         } catch (error) {
             console.log(error);
         } finally {
